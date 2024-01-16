@@ -42,7 +42,7 @@ namespace RPG_Game.Scripts
         }
         public void CheckLevel()
         {
-            int expToNextLevel = this.Level * 100;
+            int expToNextLevel = this.Level * 10;
             if (this.Experience > expToNextLevel)
             {
                 this.Level++;

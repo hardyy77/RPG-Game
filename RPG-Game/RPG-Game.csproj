@@ -58,6 +58,7 @@
     <Compile Include="InitializeWindow.xaml.cs">
       <DependentUpon>InitializeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\Location.cs" />
     <Compile Include="Scripts\Character.cs" />
     <Compile Include="Scripts\Item.cs" />
     <Compile Include="Scripts\Monster.cs" />

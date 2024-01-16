@@ -22,27 +22,32 @@
             <Button Name="Player" Content="Player" Click="PlayerViewClick" Margin="10" Width="35"></Button>
             <Button Name="Location" Content="Location" Click="LocationViewClick"></Button>
         </StackPanel>
-        <Grid x:Name="PlayerView" Visibility="Visible" Grid.Column="3" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Left" Margin="0">
+        <Grid x:Name="PlayerView" Visibility="Collapsed" Grid.Column="2" Grid.Row="0">
+            
+
+            <StackPanel HorizontalAlignment="Right" Margin="10">
+                
+                <Label Name="PlayerStrengthLabel" Content="" Width="100" />
+                <Label Name="PlayerStaminaLabel" Content="" Width="100"/>
+                
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="PlayerActualView" Visibility="Visible" Grid.Column="3" Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,-42">
                 <Label Name="PlayerNameLabel" Content="name" Width="100"/>
                 <Label Name="PlayerHealthLabel" Content="health" Width="100"/>
                 <Label Name="PlayerLevelLabel" Content="level" Width="100"/>
                 <Label Name="PlayerExpLabel" Content="Exp" Width="100"/>
                 <Label Name="PlayerMaxHealthLabel" Content="" Width="100"/>
-            </StackPanel>
-
-            <StackPanel HorizontalAlignment="Right" Margin="10">
                 <Label Name="PlayerGoldLabel" Content="gold" Width="100"/>
                 <Label Name="PlayerBankLabel" Content="bank" Width="100"/>
-                <Label Name="PlayerStrengthLabel" Content="" Width="100"/>
-                <Label Name="PlayerStaminaLabel" Content="" Width="100"/>
-                
+
             </StackPanel>
         </Grid>
-        
 
-        <Grid x:Name="LocationView" Visibility="Collapsed">
-            <Label Content="Location" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid x:Name="LocationView" Visibility="Collapsed" Grid.Column="1" Grid.Row="0">
+            <Label Name="LocationLabel"  Content="location" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
+            <Button Name="Explore" Content="Explore" Click="Exploration" Margin="83,112,129,10"/>
         </Grid>
         <Label Content="Label" HorizontalAlignment="Left" Margin="214,154,0,0" VerticalAlignment="Top"/>
     </Grid>

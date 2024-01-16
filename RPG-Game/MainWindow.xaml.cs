@@ -19,6 +19,9 @@ namespace RPG_Game
     public partial class MainWindow : Window
     {
         Player player = new Player();
+        Location location = new Location();
+        Monster monster= new Monster();
+        
 
 
         public MainWindow(string Name)
@@ -31,13 +34,18 @@ namespace RPG_Game
             DataContext = player;
 
             PlayerViewList();
+
+           
+            
         }
+
+        
 
         private void PlayerViewClick(object sender, RoutedEventArgs e)
         {
             SetVisibility(PlayerView);
 
-            PlayerMaxHealthLabel.Content = "MaxHealth: " + player.MaxHealth;
+            
             PlayerStrengthLabel.Content = "Strength: " + player.Strength;
             PlayerStaminaLabel.Content = "Stamina: " + player.Stamina;
         }
@@ -45,11 +53,16 @@ namespace RPG_Game
         private void LocationViewClick(object sender, RoutedEventArgs e)
         {
             SetVisibility(LocationView);
+
+            LocationLabel.Content = location.Name;
+
+
+
         }
 
         private void SetVisibility(UIElement activateView)
         {
-            PlayerView.Visibility = Visibility.Visible;
+            PlayerView.Visibility = Visibility.Collapsed;
             LocationView.Visibility = Visibility.Collapsed;
 
             activateView.Visibility = Visibility.Visible;
@@ -59,10 +72,77 @@ namespace RPG_Game
         {
             PlayerNameLabel.Content = "Name: " + player.Name;
             PlayerHealthLabel.Content = "Health: " + player.Health;
+            PlayerMaxHealthLabel.Content = "MaxHealth: " + player.MaxHealth;
             PlayerLevelLabel.Content = "Level: " + player.Level;
             PlayerExpLabel.Content = "Experience: " + player.Experience;
             PlayerGoldLabel.Content = "Gold: " + player.Gold;
             PlayerBankLabel.Content = "Bank: " + player.Bank;
+        }
+        private void Exploration(object sender, RoutedEventArgs e)
+        {
+
+            Random random = new Random();
+            int randomNumber = random.Next(1, 101);
+
+            if(randomNumber <=50)
+            {
+               
+                Battle(randomNumber);
+            }
+            else if (randomNumber <=60)
+            {
+                GetItem(randomNumber);
+            }
+            else if (randomNumber <=100)
+            {
+                GetGold(randomNumber);
+            }
+
+
+            PlayerViewList();
+            
+        }
+        private void Battle(int randomNumber)
+        {
+            
+
+            if (monster.Strength < player.Strength)
+            {
+                string messageBoxText = "You win!";
+
+                MessageBox.Show(messageBoxText);
+                GetItem(randomNumber);
+                player.GetGold(monster);
+                player.GetExp(monster);
+
+            }
+            else if (monster.Strength > player.Strength)
+            {
+                string messageBoxText = "You lose!";
+
+                MessageBox.Show(messageBoxText);
+                player.Health -= monster.Strength;
+            }
+            else
+            {
+                string messageBoxText = "Draw!";
+
+                MessageBox.Show(messageBoxText);
+
+            }
+        }
+        private void GetItem(int randomNumber)
+        {
+
+            
+                MessageBox.Show("Nothing special is here");
+            
+
+        }
+        private void GetGold(int randomNumber)
+        {
+            player.Gold += 20;
+            MessageBox.Show("You found some gold");
         }
 
     }
