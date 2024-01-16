@@ -55,10 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InitializeWindow.xaml.cs">
+      <DependentUpon>InitializeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\Character.cs" />
     <Compile Include="Scripts\Item.cs" />
     <Compile Include="Scripts\Monster.cs" />
     <Compile Include="Scripts\Player.cs" />
+    <Page Include="InitializeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
