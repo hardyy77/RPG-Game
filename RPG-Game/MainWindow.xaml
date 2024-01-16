@@ -7,29 +7,40 @@
         mc:Ignorable="d"
         Title="RPG Game" Height="450" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Width="157" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Width="267" Margin="0,0,0,144" Grid.RowSpan="2" >
             <Button Name="Player" Content="Player" Click="PlayerViewClick" Margin="10" Width="35"></Button>
             <Button Name="Location" Content="Location" Click="LocationViewClick"></Button>
         </StackPanel>
-        <Grid x:Name="PlayerView" Visibility="Visible">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="16*"/>
-                <RowDefinition Height="15*"/>
-            </Grid.RowDefinitions>
-            <Label Name="PlayerNameLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerMaxHealthLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2"/>
-            <Label Name="PlayerHealthLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2"  />
-            <Label Name="PlayerStrengthLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerStaminaLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerGoldLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerBankLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerLevelLabel" Content="default" HorizontalAlignment="Left" Grid.RowSpan="2" />
-            <Label Name="PlayerExpLabel" Content="Exp" HorizontalAlignment="Left" Margin="4,73,0,-73" Grid.RowSpan="2" />
-            <StackPanel HorizontalAlignment="Right" Width="157" Grid.RowSpan="2">
-
+        <Grid x:Name="PlayerView" Visibility="Visible" Grid.Column="3" Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left" Margin="0">
+                <Label Name="PlayerNameLabel" Content="name" Width="100"/>
+                <Label Name="PlayerHealthLabel" Content="health" Width="100"/>
+                <Label Name="PlayerLevelLabel" Content="level" Width="100"/>
+                <Label Name="PlayerExpLabel" Content="Exp" Width="100"/>
+                <Label Name="PlayerMaxHealthLabel" Content="" Width="100"/>
             </StackPanel>
 
+            <StackPanel HorizontalAlignment="Right" Margin="10">
+                <Label Name="PlayerGoldLabel" Content="gold" Width="100"/>
+                <Label Name="PlayerBankLabel" Content="bank" Width="100"/>
+                <Label Name="PlayerStrengthLabel" Content="" Width="100"/>
+                <Label Name="PlayerStaminaLabel" Content="" Width="100"/>
+                
+            </StackPanel>
         </Grid>
+        
+
         <Grid x:Name="LocationView" Visibility="Collapsed">
             <Label Content="Location" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>

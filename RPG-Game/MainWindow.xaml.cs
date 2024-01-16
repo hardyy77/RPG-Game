@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RPG_Game.Scripts;
 
 namespace RPG_Game
 {
@@ -22,36 +21,48 @@ namespace RPG_Game
         Player player = new Player();
 
 
-        public MainWindow()
+        public MainWindow(string Name)
         {
             InitializeComponent();
-            player.Name = "Hardy";
+           
+            player.Name = Name;
 
+            
+            DataContext = player;
+
+            PlayerViewList();
         }
 
         private void PlayerViewClick(object sender, RoutedEventArgs e)
         {
             SetVisibility(PlayerView);
-            PlayerNameLabel.Content = "Name: " + player.Name;
+
             PlayerMaxHealthLabel.Content = "MaxHealth: " + player.MaxHealth;
-            PlayerHealthLabel.Content = "Health: " + player.Health;
             PlayerStrengthLabel.Content = "Strength: " + player.Strength;
             PlayerStaminaLabel.Content = "Stamina: " + player.Stamina;
-            PlayerGoldLabel.Content = "Gold: " + player.Gold;
-            PlayerBankLabel.Content = "Bank: " + player.Bank;
-            PlayerLevelLabel.Content = "Level: " + player.Level;
-            PlayerExpLabel.Content = "Experience: " + player.Experience;
         }
+
         private void LocationViewClick(object sender, RoutedEventArgs e)
         {
             SetVisibility(LocationView);
         }
-        private void SetVisibility(Grid activateView)
+
+        private void SetVisibility(UIElement activateView)
         {
-            PlayerView.Visibility = Visibility.Collapsed;
+            PlayerView.Visibility = Visibility.Visible;
             LocationView.Visibility = Visibility.Collapsed;
 
             activateView.Visibility = Visibility.Visible;
+        }
+
+        private void PlayerViewList()
+        {
+            PlayerNameLabel.Content = "Name: " + player.Name;
+            PlayerHealthLabel.Content = "Health: " + player.Health;
+            PlayerLevelLabel.Content = "Level: " + player.Level;
+            PlayerExpLabel.Content = "Experience: " + player.Experience;
+            PlayerGoldLabel.Content = "Gold: " + player.Gold;
+            PlayerBankLabel.Content = "Bank: " + player.Bank;
         }
 
     }

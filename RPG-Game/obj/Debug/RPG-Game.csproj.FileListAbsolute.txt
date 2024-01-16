@@ -14,3 +14,5 @@ C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\RPG-Game.csproj.Generate
 C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\RPG-Game.csproj.CoreCompileInputs.cache
 C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\RPG_Game.exe
 C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\RPG_Game.pdb
+C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\InitializeWindow.baml
+C:\Users\arekl\source\GitHub\RPG\RPG\RPG-Game\obj\Debug\InitializeWindow.g.cs
