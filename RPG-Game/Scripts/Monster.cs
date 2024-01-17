@@ -10,6 +10,9 @@ namespace RPG_Game.Scripts
     {
         private int gold;
         private int exp;
+
+
+
         public int Gold { get; set; }
         public int Exp { get; set; }
 

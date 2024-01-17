@@ -13,5 +13,6 @@ namespace RPG_Game.Scripts
 
         public string Name { get; set; }
         public int Value { get; set; }
+
     }
 }
