@@ -9,8 +9,10 @@ namespace RPG_Game
     public class Location
     {
         private string name = "";
+        private string description = "";
 
         public string Name { get; set; }
+        public string Description { get; set; }
 
         public Location()
         {
