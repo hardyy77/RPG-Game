@@ -5,34 +5,79 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents;
+using System.Xml.Linq;
 using CsvHelper;
 using CsvHelper.Configuration;
+using RPG_Game.Scripts;
+using RPG_Game;
 
-namespace RPG_Game.Scripts
+public class Monster : Character
 {
-    public class Monster : Character
+    private List<string[]> allMonsters;
+    private int exp;
+
+    public int Exp
     {
-        private int gold;
-        private int exp;
+        get { return exp; }
+        set { exp = value; }
+    }
 
-        
-
-        public int Gold { get; set; }
-        public int Exp { get; set; }
-
-        public Monster()
+    public Monster()
+    {
+        allMonsters = MonsterReader();
+        if (allMonsters != null && allMonsters.Count > 0)
         {
-           
+            InitializeMonster(allMonsters[0]);
         }
-
-        private void MonsterReader()
+        else
         {
-            StreamReader monsterFile = new StreamReader("assets/monster.csv");
-            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                HasHeaderRecord = false,
-            };
-            var csv = new CsvReader(monsterFile, csvConfig);
+            MessageBox.Show("Brak danych potworów lub błąd odczytu pliku.");
         }
     }
+
+    private List<string[]> MonsterReader()
+    {
+        try
+        {
+            using (StreamReader streamReader = new StreamReader("C:\\Users\\arekl\\source\\GitHub\\RPG\\RPG\\RPG-Game\\Assets\\monster.csv"))
+            {
+                streamReader.ReadLine();
+
+                List<string[]> monsters = new List<string[]>();
+                while (!streamReader.EndOfStream)
+                {
+                    string line = streamReader.ReadLine();
+                    string[] values = line.Split(',');
+
+                    if (values.Length == 7)
+                    {
+                        monsters.Add(values);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Błąd w wierszu: {line}");
+                    }
+                }
+                return monsters;
+            }
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show($"Wystąpił błąd odczytu {exception.Message}");
+            return null;
+        }
+    }
+
+    private void InitializeMonster(string[] monsterData)
+    {
+        Name = monsterData[1].Trim();
+        Health = int.Parse(monsterData[2]);
+        Strength = int.Parse(monsterData[3]);
+        Stamina = int.Parse(monsterData[4]);
+        Gold = int.Parse(monsterData[5]);
+        Exp = int.Parse(monsterData[6]);
+    }
 }
+

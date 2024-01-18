@@ -6,20 +6,57 @@ using System.Threading.Tasks;
 
 namespace RPG_Game.Scripts
 {
-    public abstract class Character
+    public abstract class Character 
     {
+        protected int id;
+        protected int maxHealth;
+        protected int health;
+        protected string name = "";
+        protected int stamina;
+        protected int strength;
+        
+        protected int gold;
 
-        private int maxHealth;
-        private int health;
-        private string name = "";
-        private int stamina;
-        private int strength;
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public int MaxHealth
+        {
+            get { return maxHealth; }
+            set { maxHealth = value; }
+        }
 
-        public int MaxHealth { get; set; }
-        public int Health { get; set; }
-        public string Name { get; set; }
-        public int Stamina { get; set; }
-        public int Strength { get; set; }
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
 
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Stamina
+        {
+            get { return stamina; }
+            set { stamina = value; }
+        }
+
+        public int Strength
+        {
+            get { return strength; }
+            set { strength = value; }
+        }
+
+    
+        public int Gold
+        {
+            get { return gold; }
+            set { gold = value; }
+        }
     }
 }
