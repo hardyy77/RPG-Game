@@ -57,11 +57,32 @@ namespace RPG_Game
                 $" Gold: {monster.Gold}," +
                 $" Exp: {monster.Exp}";
         }
+        private void ForestClickButton(object sender, RoutedEventArgs e)
+        {
+           
+            ForestView.Visibility = Visibility.Visible;
+            
+            
+        }
+        private void MountainsClickButton(object sender, RoutedEventArgs e)
+        {
+
+            MoutainsView.Visibility = Visibility.Visible;
+            ForestView.Visibility = Visibility.Collapsed;
+        }
+        private void OceanClickButton(object sender, RoutedEventArgs e)
+        {
+            OceanView.Visibility = Visibility.Visible;
+        }
 
         private void SetVisibility(UIElement activateView)
         {
             PlayerView.Visibility = Visibility.Collapsed;
             LocationView.Visibility = Visibility.Collapsed;
+            ForestView.Visibility = Visibility.Collapsed;
+            MoutainsView.Visibility = Visibility.Collapsed;
+            OceanView.Visibility = Visibility.Collapsed;
+            
 
             activateView.Visibility = Visibility.Visible;
         }
@@ -77,7 +98,7 @@ namespace RPG_Game
             PlayerBankLabel.Content = $"Bank: {player.Bank}";
         }
 
-        private void Exploration(object sender, RoutedEventArgs e)
+        private void ForestExploration(object sender, RoutedEventArgs e)
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 101);
@@ -96,6 +117,8 @@ namespace RPG_Game
             }
 
             PlayerViewList();
+
+           
         }
 
         private void Battle(int randomNumber)
