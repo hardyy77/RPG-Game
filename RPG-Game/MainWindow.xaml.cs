@@ -22,15 +22,19 @@ namespace RPG_Game
     {
         Player player = new Player();
         Monster monster = new Monster();
-        Location location= new Location();
-        
+        Location forest = new Location(LocationType.Forest);
+        Location mountains = new Location(LocationType.Mountains);
+        Location ocean = new Location(LocationType.Ocean);
+
+
 
         public MainWindow(string Name)
         {
             InitializeComponent();
 
             player.Name = Name;
-            monster = new Monster();
+       
+            
 
             DataContext = player;
 
@@ -45,35 +49,69 @@ namespace RPG_Game
             PlayerStaminaLabel.Content = $"Stamina: {player.Stamina}";
         }
 
+        #region location
         private void LocationViewClick(object sender, RoutedEventArgs e)
         {
             SetVisibility(LocationView);
 
-            LocationLabel.Content = location.Name;
-            MonsterStatsLabel.Content = $"Monster Stats: {monster.Name}," +
-                $" Health: {monster.Health}," +
-                $" Strength: {monster.Strength}," +
-                $" Stamina: {monster.Stamina}," +
-                $" Gold: {monster.Gold}," +
-                $" Exp: {monster.Exp}";
+
+            MonsterStatsLabel.Content = forest;
+                //$"Monster Stats: {monster.Name}," +
+                //$" Health: {monster.Health}," +
+                //$" Strength: {monster.Strength}," +
+                //$" Stamina: {monster.Stamina}," +
+                //$" Gold: {monster.Gold}," +
+                //$" Exp: {monster.Exp}";
         }
         private void ForestClickButton(object sender, RoutedEventArgs e)
         {
            
             ForestView.Visibility = Visibility.Visible;
-            
-            
+            OceanView.Visibility = Visibility.Collapsed;
+            MoutainsView.Visibility = Visibility.Collapsed;
+            ViewLocationName(sender, e);
+
+
         }
         private void MountainsClickButton(object sender, RoutedEventArgs e)
         {
 
             MoutainsView.Visibility = Visibility.Visible;
             ForestView.Visibility = Visibility.Collapsed;
+            OceanView.Visibility = Visibility.Collapsed;
+            ViewLocationName(sender, e);
         }
         private void OceanClickButton(object sender, RoutedEventArgs e)
         {
             OceanView.Visibility = Visibility.Visible;
+            ForestView.Visibility = Visibility.Collapsed;
+            MoutainsView.Visibility = Visibility.Collapsed;
+            ViewLocationName(sender, e);
         }
+        private void ViewLocationName(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            
+
+            if (clickedButton == ForestButton)
+            {
+                LocationLabel.Content = forest.Name;
+                LocationDescriptionLabel.Content = forest.Description;
+            }
+            else if (clickedButton == MountainsButton)
+            {
+                LocationLabel.Content = mountains.Name;
+                LocationDescriptionLabel.Content = mountains.Description;
+            }
+            else if (clickedButton == OceanButton)
+            {
+                LocationLabel.Content = ocean.Name;
+                LocationDescriptionLabel.Content = ocean.Description;
+            }
+            
+        }
+        #endregion
 
         private void SetVisibility(UIElement activateView)
         {

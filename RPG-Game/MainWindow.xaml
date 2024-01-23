@@ -42,7 +42,7 @@
 
         <StackPanel Grid.ColumnSpan="4" Margin="533,0,533,0">
             
-            <Grid x:Name="LocationView" Visibility="Collapsed" Margin="0,0,0,10">
+            <Grid x:Name="LocationView" Visibility="Visible" Margin="0,0,0,10">
                 
                 <Grid x:Name="MapView" Visibility="Visible" Margin="0,494,0,-404">
                     <Image Source="Assets/map.jpg" Margin="-10,7,10,0" Height="362" VerticalAlignment="Top">
@@ -50,7 +50,7 @@
                     </Image>
                 </Grid>
                 <Button Name="ForestButton" Content="Forest" Click="ForestClickButton" Margin="71,726,407,-288"></Button>
-                <Grid x:Name="ForestView" Visibility="Collapsed" Margin="0,0,0,-28">
+                <Grid x:Name="ForestView" Visibility="Visible" Margin="0,0,0,-28">
                     <Button Name="Explore" Content="Explore" Click="ForestExploration" Margin="161,285,287,71" Visibility="Visible"/>
                 </Grid>
                 <Button Name="MountainsButton" Content="Mountains" Click="MountainsClickButton" Margin="350,595,128,-157"></Button>
@@ -62,6 +62,7 @@
 
                 </Grid>
                 <Label Name="LocationLabel" Content="LocationLabel" Visibility="Visible" Margin="0,10,0,430" />
+                <Label Name="LocationDescriptionLabel" Content="aaaaaaa" Visibility="Visible" Margin="10,88,449,332"/>
                 <Label Name="MonsterStatsLabel" Content="MonsterStatsLabel" Margin="0,30,0,391" />
                 
             </Grid>

@@ -15,7 +15,7 @@ using RPG_Game;
 
 public class Monster : Character
 {
-    private List<string[]> allMonsters;
+    public List<string[]> allMonsters;
     private int exp;
 
     public int Exp
@@ -37,7 +37,7 @@ public class Monster : Character
         }
     }
 
-    private List<string[]> MonsterReader()
+    public List<string[]> MonsterReader()
     {
         try
         {
@@ -51,7 +51,7 @@ public class Monster : Character
                     string line = streamReader.ReadLine();
                     string[] values = line.Split(',');
 
-                    if (values.Length == 7)
+                    if (values.Length == 8)
                     {
                         monsters.Add(values);
                     }
@@ -70,8 +70,9 @@ public class Monster : Character
         }
     }
 
-    private void InitializeMonster(string[] monsterData)
+    public void InitializeMonster(string[] monsterData)
     {
+        
         Name = monsterData[1].Trim();
         Health = int.Parse(monsterData[2]);
         Strength = int.Parse(monsterData[3]);
