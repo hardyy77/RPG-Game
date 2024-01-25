@@ -72,13 +72,13 @@ public class Monster : Character
 
     public void InitializeMonster(string[] monsterData)
     {
-        
-        Name = monsterData[1].Trim();
-        Health = int.Parse(monsterData[2]);
-        Strength = int.Parse(monsterData[3]);
-        Stamina = int.Parse(monsterData[4]);
-        Gold = int.Parse(monsterData[5]);
-        Exp = int.Parse(monsterData[6]);
+        Location = monsterData[1];
+        Name = monsterData[2].Trim();
+        Health = int.Parse(monsterData[3]);
+        Strength = int.Parse(monsterData[4]);
+        Stamina = int.Parse(monsterData[5]);
+        Gold = int.Parse(monsterData[6]);
+        Exp = int.Parse(monsterData[7]);
     }
 }
 

@@ -14,6 +14,7 @@ namespace RPG_Game.Scripts
         protected string name = "";
         protected int stamina;
         protected int strength;
+        protected string location = "";
         
         protected int gold;
 
@@ -50,6 +51,11 @@ namespace RPG_Game.Scripts
         {
             get { return strength; }
             set { strength = value; }
+        }
+        public string Location
+        {
+            get { return location; }
+            set { location = value; }
         }
 
     

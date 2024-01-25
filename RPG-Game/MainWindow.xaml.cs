@@ -55,7 +55,7 @@ namespace RPG_Game
             SetVisibility(LocationView);
 
 
-            MonsterStatsLabel.Content = forest;
+            MonsterStatsLabel.Content = "";
                 //$"Monster Stats: {monster.Name}," +
                 //$" Health: {monster.Health}," +
                 //$" Strength: {monster.Strength}," +
@@ -65,34 +65,49 @@ namespace RPG_Game
         }
         private void ForestClickButton(object sender, RoutedEventArgs e)
         {
-           
-            ForestView.Visibility = Visibility.Visible;
-            OceanView.Visibility = Visibility.Collapsed;
-            MoutainsView.Visibility = Visibility.Collapsed;
-            ViewLocationName(sender, e);
-
-
+            SetLocation(LocationType.Forest, sender);
+            //ViewLocationName(sender, e);
         }
+
         private void MountainsClickButton(object sender, RoutedEventArgs e)
         {
-
-            MoutainsView.Visibility = Visibility.Visible;
-            ForestView.Visibility = Visibility.Collapsed;
-            OceanView.Visibility = Visibility.Collapsed;
-            ViewLocationName(sender, e);
+            SetLocation(LocationType.Mountains, sender);
+            //ViewLocationName(sender, e);
         }
+
         private void OceanClickButton(object sender, RoutedEventArgs e)
         {
-            OceanView.Visibility = Visibility.Visible;
-            ForestView.Visibility = Visibility.Collapsed;
-            MoutainsView.Visibility = Visibility.Collapsed;
-            ViewLocationName(sender, e);
+            SetLocation(LocationType.Ocean, sender);
+            //ViewLocationName(sender, e);
         }
-        private void ViewLocationName(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = sender as Button;
 
-            
+        private void SetLocation(LocationType locationType, object sender)
+        {
+            switch (locationType)
+            {
+                case LocationType.Forest:
+                    ForestView.Visibility = Visibility.Visible;
+                    OceanView.Visibility = Visibility.Collapsed;
+                    MoutainsView.Visibility = Visibility.Collapsed;
+                    break;
+
+                case LocationType.Mountains:
+                    MoutainsView.Visibility = Visibility.Visible;
+                    ForestView.Visibility = Visibility.Collapsed;
+                    OceanView.Visibility = Visibility.Collapsed;
+                    break;
+
+                case LocationType.Ocean:
+                    OceanView.Visibility = Visibility.Visible;
+                    ForestView.Visibility = Visibility.Collapsed;
+                    MoutainsView.Visibility = Visibility.Collapsed;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(locationType), locationType, null);
+            }
+
+            Button clickedButton = sender as Button;
 
             if (clickedButton == ForestButton)
             {
@@ -109,8 +124,29 @@ namespace RPG_Game
                 LocationLabel.Content = ocean.Name;
                 LocationDescriptionLabel.Content = ocean.Description;
             }
-            
+
+            Location location = new Location(locationType);
+
+            DisplayMonsterFromLocation(location);
         }
+        private void DisplayMonsterFromLocation(Location location)
+        {
+            if (location.MonstersInLocation != null && location.MonstersInLocation.Any())
+            {
+                Monster firstMonster = location.MonstersInLocation.First();
+                MessageBox.Show($"Monster in {location.Name}: {firstMonster.Name}\nHealth: {firstMonster.Health}\nStrength: {firstMonster.Strength}");
+            }
+            else
+            {
+                MessageBox.Show($"No monsters in {location.Name}");
+            }
+        }
+
+        //private void ViewLocationName(object sender, RoutedEventArgs e)
+        //{
+            
+            
+        //}
         #endregion
 
         private void SetVisibility(UIElement activateView)

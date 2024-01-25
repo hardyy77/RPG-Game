@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RPG_Game.Scripts
 {
@@ -14,16 +15,15 @@ namespace RPG_Game.Scripts
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
-
-        //public List<Monster> MonstersInLocation { get; private set; }
+        public List<Monster> MonstersInLocation { get; private set; }
 
         public Location(LocationType locationType)
         {
-            //MonstersInLocation = new List<Monster>();
-            //Monster monster = new Monster();
-            //List<string[]> allMonsters = monster.allMonsters;
+            MonstersInLocation = new List<Monster>();
+            Monster monster = new Monster();
+            List<string[]> allMonsters = monster.allMonsters;
             SetLocationDetails(locationType);
-            //AssignMonstersToLocation(allMonsters, monster);
+            AssignMonstersToLocation(allMonsters, monster, locationType);
         }
 
         private void SetLocationDetails(LocationType locationType)
@@ -50,47 +50,44 @@ namespace RPG_Game.Scripts
             }
         }
 
-        //private void AssignMonstersToLocation(List<string[]> allMonsters, Monster monster)
-        //{
-        //    foreach (var monsterData in allMonsters)
-        //    {
+        private void AssignMonstersToLocation(List<string[]> allMonsters, Monster monster, LocationType locationType)
+        {
+            var monstersInCurrentLocation = allMonsters.Where(m => GetLocationTypeFromMonsterName(m[1]) == locationType);
 
-        //        monster.InitializeMonster(monsterData);
+            foreach (var monsterData in monstersInCurrentLocation)
+            {
+                monster.InitializeMonster(monsterData);
 
-        //        if (monster.Id > 0 && monster.Id < 6)
-        //        {
-        //            MonstersInLocation.Add(monster);
-        //        }
-        //        switch (monsterData[0])
-        //        {
-        //            case "1":
-        //            case "2":
-        //            case "3":
-        //            case "4":
-        //            case "5":
-        //                if (Name == "Forest")
-        //                    MonstersInLocation.Add(monster);
-        //                break;
+                MonstersInLocation.Add(new Monster
+                {
+                    Name = monster.Name,
+                    Health = monster.Health,
+                    Strength = monster.Strength,
+                    Stamina = monster.Stamina,
+                    Gold = monster.Gold,
+                    Exp = monster.Exp
+                });
+            }
+        }
 
-        //            case "11":
-        //            case "12":
-        //            case "13":
-        //            case "14":
-        //            case "15":
-        //                if (Name == "Ocean")
-        //                    MonstersInLocation.Add(monster);
-        //                break;
-
-        //            case "21":
-        //            case "22":
-        //            case "23":
-        //            case "24":
-        //            case "25":
-        //                if (Name == "Mountains")
-        //                    MonstersInLocation.Add(monster);
-        //                break;
-        //        }
-        //    }
-        //}
+        private LocationType GetLocationTypeFromMonsterName(string monsterName)
+        {
+            if (monsterName.ToLower().Contains("forest"))
+            {
+                return LocationType.Forest;
+            }
+            else if (monsterName.ToLower().Contains("mountains"))
+            {
+                return LocationType.Mountains;
+            }
+            else if (monsterName.ToLower().Contains("ocean"))
+            {
+                return LocationType.Ocean;
+            }
+            else
+            {
+                return LocationType.Forest;
+            }
+        }
     }
 }
