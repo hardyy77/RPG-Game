@@ -5,45 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPG_Game"
         mc:Ignorable="d"
-        Title="RPG Game" Height="450" Width="800">
-    <Grid>
+        Title="RPG Game" Height="900" Width="1600">
+    <Grid Background="DarkGray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="533*" />
+            <ColumnDefinition Width="175*" />
+            <ColumnDefinition Width="359*"/>
+            <ColumnDefinition Width="533*" />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Width="267" Margin="0,0,0,144" Grid.RowSpan="2" >
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Width="513" Margin="0,0,0,10" >
             <Button Name="Player" Content="Player" Click="PlayerViewClick" Margin="10" Width="35"></Button>
-            <Button Name="Location" Content="Location" Click="LocationViewClick"></Button>
+            <Button x:Name="Adventure" Content="Adventure" Click="LocationViewClick" Margin="10" Width="35"/>
         </StackPanel>
-        <Grid x:Name="PlayerView" Visibility="Visible" Grid.Column="3" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Left" Margin="0">
-                <Label Name="PlayerNameLabel" Content="name" Width="100"/>
-                <Label Name="PlayerHealthLabel" Content="health" Width="100"/>
-                <Label Name="PlayerLevelLabel" Content="level" Width="100"/>
-                <Label Name="PlayerExpLabel" Content="Exp" Width="100"/>
-                <Label Name="PlayerMaxHealthLabel" Content="" Width="100"/>
-            </StackPanel>
 
+        <Grid x:Name="PlayerView" Visibility="Collapsed" Grid.Column="3" Grid.Row="0">
             <StackPanel HorizontalAlignment="Right" Margin="10">
-                <Label Name="PlayerGoldLabel" Content="gold" Width="100"/>
-                <Label Name="PlayerBankLabel" Content="bank" Width="100"/>
-                <Label Name="PlayerStrengthLabel" Content="" Width="100"/>
-                <Label Name="PlayerStaminaLabel" Content="" Width="100"/>
-                
+                <Label Name="PlayerStrengthLabel" Content="{Binding Path=Strength, StringFormat='Strength: {0}'}" Width="100" />
+                <Label Name="PlayerStaminaLabel" Content="{Binding Path=Stamina, StringFormat='Stamina: {0}'}" Width="100"/>
             </StackPanel>
         </Grid>
-        
 
-        <Grid x:Name="LocationView" Visibility="Collapsed">
-            <Label Content="Location" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid x:Name="PlayerDetailView" Visibility="Visible" Grid.Column="3" Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,-42">
+                <Label Name="PlayerNameLabel" Content="Name" Width="100"/>
+                <Label Name="PlayerHealthLabel" Content="Health" Width="100"/>
+                <Label Name="PlayerLevelLabel" Content="Level" Width="100"/>
+                <Label Name="PlayerExpLabel" Content="Exp" Width="100"/>
+                <Label Name="PlayerMaxHealthLabel" Content="MaxHealth" Width="100"/>
+                <Label Name="PlayerGoldLabel" Content="Gold" Width="100"/>
+                <Label Name="PlayerBankLabel" Content="Bank" Width="100"/>
+            </StackPanel>
         </Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="214,154,0,0" VerticalAlignment="Top"/>
+
+
+        <StackPanel Grid.ColumnSpan="4" Margin="533,0,533,0">
+            
+            <Grid x:Name="LocationView" Visibility="Visible" Margin="0,0,0,10">
+                
+                <Grid x:Name="MapView" Visibility="Visible" Margin="0,494,0,-404">
+                    <Image Source="Assets/map.jpg" Margin="-10,7,10,0" Height="362" VerticalAlignment="Top">
+                        
+                    </Image>
+                </Grid>
+                <Button Name="ForestButton" Content="Forest" Click="ForestClickButton" Margin="71,726,407,-288"></Button>
+                <Grid x:Name="ForestView" Visibility="Visible" Margin="0,0,0,-28">
+                    <Button Name="Explore" Content="Explore" Click="ForestExploration" Margin="161,285,287,71" Visibility="Visible"/>
+                </Grid>
+                <Button Name="MountainsButton" Content="Mountains" Click="MountainsClickButton" Margin="350,595,128,-157"></Button>
+                <Grid x:Name="MoutainsView" Visibility="Collapsed">
+                    
+                </Grid>
+                <Button Name="OceanButton" Content="Ocean" Click="OceanClickButton" Margin="155,648,323,-209"></Button>
+                <Grid x:Name="OceanView" Visibility="Collapsed">
+
+                </Grid>
+                <Label Name="LocationLabel" Content="LocationLabel" Visibility="Visible" Margin="0,10,0,430" />
+                <Label Name="LocationDescriptionLabel" Content="aaaaaaa" Visibility="Visible" Margin="10,88,449,332"/>
+                <Label Name="MonsterStatsLabel" Content="MonsterStatsLabel" Margin="0,30,0,391" />
+                
+            </Grid>
+        </StackPanel>
+
+
     </Grid>
 </Window>

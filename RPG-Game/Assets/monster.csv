@@ -1,0 +1,16 @@
+Id,Location,Name,Health,Strength,Stamina,Gold,Exp
+1,Forest,Soul of the Forest Hunter,90,25,20,100,250
+2,Forest,Spectral Elf,150,35,30,120,200
+3,Forest,Forest Wanderer,110,30,25,80,150
+4,Forest,Destructive Squirrel,120,25,20,90,180
+5,Forest,Elven Hunter,100,28,22,120,220
+11,Ocean,Soul-Strangler of the Abyss,120,30,25,80,180
+12,Ocean,Lake Coral Guardian,100,25,20,120,250
+13,Ocean,Shipwreck Water Spirit,150,38,33,150,300
+14,Ocean,Giant Sea Pike,200,45,40,200,350
+15,Ocean,Nymph of the Ocean,110,28,24,130,280
+21,Mountains,Windstorm Winged Creature,130,32,28,90,200
+22,Mountains,Ravenous Gryphon,160,42,36,180,320
+23,Mountains,Mountain Witch,120,30,25,100,220
+24,Mountains,Volcanic Dragon,250,50,45,250,400
+25,Mountains,Frosty Yeti,180,38,32,160,300
